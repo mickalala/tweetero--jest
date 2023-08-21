@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { UserDTO } from './dtos/user.dto';
 import { TweetDTO } from './dtos/tweet.dto';
@@ -13,7 +13,8 @@ export class AppController {
   }
 
   @Post('sign-up')
-  postUser(@Body() body: UserDTO): void {
+  postUser(@Body() body: UserDTO) {
+   
     return this.appService.postUser(body)
   }
 
@@ -29,8 +30,10 @@ export class AppController {
   }
 
   @Get('tweets')
-  getTweet(){}
+  getTweet() { }
 
   @Get('tweets/:username')
-  getTweets(){}
+  getTweets(@Param('username') username: string) {
+    return this.appService.getTweets(username)
+  }
 }

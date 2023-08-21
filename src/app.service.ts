@@ -17,9 +17,10 @@ export class AppService {
     this._tweets = [];
   }
 
-  postUser(body: UserDTO): void {
-    const user = new User(body.username, body.avatar)
-    this._users.push(user)
+  postUser(body: UserDTO) {
+    console.log(body)
+    const user = new User(body.username, body.avatar);
+    return this._users.push(user)
   }
 
   postTweet(body: TweetDTO): void {
